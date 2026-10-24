@@ -1,0 +1,35 @@
+Part 1:
+1: Structs have member access be public as default because 
+a carry-over from C. Classes have member access be private as
+default, instead having the accessors be public.
+
+2: TObject is the default class for any class in ROOT. Inhereting
+from it means we get prepackaged error handling, sorting, printing,
+drawing etc.. It guarantees that our class functions and can be 
+stored within ROOT.
+
+3: Compile using ".L MovingObject.cxx+"
+
+Part 2:
+
+4 and 5: Load and use speedcheck.C after compiling MovingObject, 
+it checks that the setter and getters work properly. The result 
+should be that for example A the total speed is 0.5 while for B 
+it is 0.707107.
+
+The reason why B has a higher total speed without changing the
+horisontal speed is that when raising vz the object has to move 
+an extra distance in the same time as before, meaning higher speed, 
+but this distance is orthogonal to the horisontal plane spanned 
+by vx and vy meaning the total speed in that plane is unchanged.
+
+6: We can verify the amount of entries by looking at the tree->Print()
+output. The seed used was 55555 and the parameters were a mean of 
+0.0 and deviation of +-1.5 for all three axes.
+
+Part 3:
+
+7: In Velocity_components.png you can see a saved scatterplot and
+histogram from the implementation in Part 3. 
+
+Before running, make sure you load write.C and read.C.
