@@ -32,4 +32,18 @@ Part 3:
 7: In Velocity_components.png you can see a saved scatterplot and
 histogram from the implementation in Part 3. 
 
+In the scatterplot we that the horisontal speed can go up to 
+almost 7 in very rare cases but that most entries gather between 
+-1 to 1 of Z and around 1.5 to 2.5 of the horisontal speed.
+
+In the histogram we see that most entries gather around origo 
+but that there are some buckets in the quadrant where both x and y
+are positive that contain up to 14 entries.
+
+The gathering of the entries in both plots is a result of our 
+generation parameters (mean 0 with an error of +-1.5) while the 
+specific gathering in the positive quadrant of the histogram is 
+likely complletely random, seeing as there's nothing in our code 
+directing entry-generation within our parameters.
+
 Before running, make sure you load write.C and read.C.
