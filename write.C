@@ -10,9 +10,9 @@ void write(){
     TTree* tree = new TTree("tree", "Velocity measurements");
     tree->Branch("MovingObject", "MovingObject", &obj);
     for (Int_t i = 0; i < nMeasurements; ++i) {
-        Double_t vx = gRandom->Gaus(0.0, 1.50);
-        Double_t vy = gRandom->Gaus(0.0, 1.50);
-        Double_t vz = gRandom->Gaus(0.0, 1.50);
+        Double_t vx = gRandom->Gaus(0.0, 0.30);
+        Double_t vy = gRandom->Gaus(0.0, 0.30);
+        Double_t vz = gRandom->Gaus(0.0, 0.30);
 
         obj->SetVelocity(vx, vy, vz);
 

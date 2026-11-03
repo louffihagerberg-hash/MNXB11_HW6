@@ -14,11 +14,24 @@ void read() {
     "sqrt(MovingObject.fVx*MovingObject.fVx + MovingObject.fVy*MovingObject.fVy + MovingObject.fVz*MovingObject.fVz) > 0.50",
     ""
     );
-    TH1 *h = (TH1*)gPad->GetPrimitive("htemp");
-    h->SetTitle("Horizontal Speed/Z-axis velocity;z-Velocity v_{z} (m/s);Horizontal Speed v_{xy} (m/s)");
 
     c1->cd(2);
-    tree->Draw("fVy:fVx>>h2(100,-5,5,100,-5,5)", "", "COLZ");
-    TH1 *h2 = (TH1*)gPad->GetPrimitive("htemp");
-    h2->SetTitle("Horisontal velocity comparison; x-Velocity v_{x} (m/s); y-Velocity v_{y} (m/s)");
+
+    MovingObject *obj = nullptr;
+    tree->SetBranchAddress("MovingObject", &obj);
+
+    TH2D *h2 = new TH2D(
+        "h2",
+        "Horizontal velocity comparison;x-Velocity v_{x} (m/s);y-Velocity v_{y} (m/s)",
+        100, -1.5, 1.5,
+        100, -1.5, 1.5
+    );
+
+    for (int i = 0; i < tree->GetEntries(); i++) {
+        tree->GetEntry(i);
+
+        h2->Fill(obj->Vx(), obj->Vy());
+    }
+
+    h2->Draw("COLZ");
 }
